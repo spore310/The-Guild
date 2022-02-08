@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>The Guild</title>
+<style>
+
+table, th, td {
+  border:1px solid black;
+}
+
+</style>
+</head>
+<body>
+    <div class="navigation-bar">
+        <%- include('partials/header.ejs') %>
+      </div>
+    <div class="pending-users">
+        <table style="width:100%">
+            <tr>
+            <th>Name</th>
+            <th>DNA</th>
+            <th>Image</th>
+            <th>Social Media</th>
+            <th>Options</th>
+            </tr>
+        
+            <% pending.forEach(res=>{%>
+                <tr>
+                <td><%= res.name %></td>
+                <td><%=res.DNA %></td>
+                <td><img src="<%= `${res.image_url}` %>" width="50" height="50" alt="NFT"></td>
+                <td><%= res.social_media %></td>
+                <td><form action="/pendingUsers" method="POST"><input type="submit" name="<%= `${res.name}` %>" value="Delete" /></form></td>
+                <td><form action="/pendingUsers" method="POST"><input type="submit" name="<%= `${res.name}` %>" value="Edit" /></form></td>
+                </tr>
+            <% }); %>
+            
+        </table>
+    </div>
+</body>
+</html>
