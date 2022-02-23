@@ -15,8 +15,12 @@
   display: block;
   text-align: center;
   padding: 14px 16px;
-  background-color: #56ee14;
+  color: antiquewhite;
+  background-color: #000000da;
 }
+    button#log-out{
+        float:right;
+    }
 </style>
 <ul class="navigation-header">
     <li class="navigation-list"><a class="nav-a" href="/">Home</a></li>
@@ -24,4 +28,5 @@
     <li class="navigation-list"><a class="nav-a" href="/pendingUsers">Submit List</a></li>
     <li class="navigation-list"><a class="nav-a" href="">Contact Admin</a></li>
     <li class="navigation-list"><a class="nav-a" href="">About</a></li>
+    <form action="/logout?_method=DELETE" method="POST"><button type="submit" id="log-out">Log out</button></form>
 </ul>

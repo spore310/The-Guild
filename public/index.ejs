@@ -4,48 +4,49 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Visual Code</title>
-
+  <title>The Guild</title>
+  <style>
+    div #index{
+      text-align: center;
+      float: center;
+      padding: 50px;
+    }
+  </style>
 </head>
-<style>
-  img {
-    float: right;
-  }
-</style>
+
 
 <body>
-<div class="navigation-bar">
-  <%- include('partials/header.ejs') %>
-</div>
-<br>
-<h1>The Guild NFT Maker</h1>
-  <div class="input-fields">
-    <img id="result" width="600" height="500" src="<%= `${image}` %>">
-    <form action="/confirm" method="POST">
-
-      <label for="nftName">Enter Name:</label>
-      <input type="text" name="nftName" placeholder="Enter a new file name"><br>
-      <% inputs.forEach(field=>{ %>
-        <label for=<%=field.name %>> <%= field.name.toUpperCase() %>: </label>
-
-        <select name="layers" id="<%= field.name %>">
-          <% field.assets.forEach(file=>{ %>
-            <option value="<%=file%>">
-              <%=file%>
-            </option>
-
-            <% });%>
-        </select>
-        <br>
-        <% });%>
-          <input type="submit" value="create" />
-    </form>
-
-
-
+  <div class="navigation-bar">
+    <%- include('partials/header.ejs') %>
   </div>
 
+  <div class="about-us" id="index">
+    <h1>The Guild</h1>
+    <p>The Guild is an organization that is built on the idea that an artist should need nothing more than thier own
+      skill.</p>
+    <p>Every artist that we verify has proven thier craft and experience to become a part of our ecosystem.</p>
+    <p>This saves our clients precious time and resources to fufill whatever custom job they would like!</p>
+  </div>
+  <br>
+  <div class="instructions" id="index">
+    <h1>Instructions</h1>
+    <p>Click on the "create" tab and enter the information with your login information.</p>
+    <p>Enter the requested fields and it will be uploaded into the pending repository.</p>
+    <p>Veiw the repository to submit your batch of approved members.</p>
+  </div>
+  <br>
+  <div class="updates" id="index">
+    <h1>Current objectives</h1>
+    <ul>
+      <li>Secure HTTPS routes</li>
+      <li>look into draft image veiwing for users in thier bin</li>
+      <li>Refafctor routes</li>
+      <li>Refactor helper functions</li>
+      <li>insert boolean key-value for onchain</li>
+      <li>insert wallet address option to upload</li>
+      <li>register a way for applicants</li>
+    </ul>
+  </div>
 </body>
 
 </html>
-<!-- <img id="result" width="600" height="500" src="/output/<%= `${image}` %>.png"> -->

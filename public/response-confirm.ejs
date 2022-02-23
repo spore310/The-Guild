@@ -13,7 +13,8 @@
     }
   </style>
 <body>
-<img id="result" width="600" height="500" src="/output/<%= `${image}` %>.png">
+<label for="result">Last nft drafted</label>
+
 <div class ="nft-confirmation">
  <p>response page</p>  
 
@@ -36,7 +37,7 @@
 
 <form action="/result" method="POST">
 <p>Are you sure you want to confirm this NFT?</p>
-<input type ="text" name = "draftName1" value="<%= metaData.name %>" readonly>
+<input type ="text" name = "draftName1" value="<%= metaData.name %>" readonly><br>
 <input type="radio" id="confirm" name="confirm_operator" value="yes">
 <label for="confirm">Yes</label><br>
 <input type="radio" id="cancel" name="confirm_operator" value="no" checked>

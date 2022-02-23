@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Visual Code</title>
+
+</head>
+
+<body>
+    <h1>Login</h1>
+    <%if(messages.error){%>
+        <%= messages.error %>
+            <%};%>
+                <div>
+                    <form action="/login" method="POST">
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" placeholder="Enter a username:"><br>
+                        <label for="password">Paseeword:</label>
+                        <input type="password" name="password" placeholder="Enter a password:">
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+</body>
+
+</html>
