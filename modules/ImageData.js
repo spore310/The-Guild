@@ -20,18 +20,18 @@ const changeImageUrl = () => {
 
 }
 
-const convertImage_SVG = (_name) => {
-    imageToBase64(`${process.cwd()}/public/output/${_name}.png`).then((res) => {
-        let temp = fs.readFileSync(`${process.cwd()}/public/outputJSON/${_name}.json`);
+const convertImage_SVG = (_name, _username) => {
+    imageToBase64(`${process.cwd()}/users/${_username}/images/${_name}.png`).then((res) => {
+        let temp = fs.readFileSync(`${process.cwd()}/users/${_username}/metadata/${_name}.json`);
         let temp1 = JSON.parse(temp);
 
         res = `data:image/png;base64, ` + `${res}`;
         temp1.image_url = res;
-        fs.writeFileSync(`${process.cwd()}/public/final/${_name}.json`, JSON.stringify(temp1));
+        fs.writeFileSync(`${process.cwd()}/users/${_username}/final/${_name}.json`, JSON.stringify(temp1));
         console.log("image converted to baseCode!");
     }).then(result => {
-        const itemImage = fs.unlink(`${process.cwd()}/public/output/${_name}.png`, err => { if (err) { console.log(err) } });
-        const itemJSON = fs.unlink(`${process.cwd()}/public/outputJSON/${_name}.json`, err => { if (err) { console.log(err) } });
+        const itemImage = fs.unlink(`${process.cwd()}/users/${_username}/images/${_name}.png`, err => { if (err) { console.log(err) } });
+        const itemJSON = fs.unlink(`${process.cwd()}/users/${_username}/metadata/${_name}.json`, err => { if (err) { console.log(err) } });
         if (!itemImage && !itemJSON) {
             console.log("succesful temp file removal");
             

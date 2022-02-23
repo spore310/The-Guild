@@ -1,9 +1,9 @@
 const fs = require("fs");
 const process = require('process');
 //constructor for the metadata format
-function metadata(_name, _imageurl, _desc, _social, _atr = []) {
+function metadata(_name,_dna, _imageurl, _desc, _social, _atr = []) {
         this.name = _name,
-                this.DNA = getDNA(),
+                this.DNA = _dna,
                 this.image_url = _imageurl,
                 this.description = _desc
         this.social_media = _social,
@@ -11,7 +11,7 @@ function metadata(_name, _imageurl, _desc, _social, _atr = []) {
 }
 
 
-const getTraits = (_name, _imageurl, _layers = []) => {
+const getTraits = (_username, _name, _imageurl, _layers = []) => {
         let temp = [];
         let s;
 
@@ -60,28 +60,28 @@ const getTraits = (_name, _imageurl, _layers = []) => {
 
         console.log(`${_layers.length} attributes have been proccesed!`);
 
-        s = new metadata(_name, _imageurl, `${_name} is an offical member!`, "TheGuild.io", temp);
+        s = new metadata(_name, getDNA(), _imageurl, `${_name} is an offical member!`, "TheGuild.io", temp);
 
-        fs.writeFileSync(`${process.cwd()}/public/outputJSON/${s.name}.json`, JSON.stringify(s));
+        fs.writeFileSync(`${process.cwd()}/users/${_username}/metadata/${s.name}.json`, JSON.stringify(s));
 
         console.log(`${s.name} has had their metadata proccessed`);
 
-        const logsFile = fs.readFileSync(`${process.cwd()}/logs/metalogs.json`);
-
-        let file = JSON.parse(logsFile);
-
-        file.push(s);
-
-        fs.writeFileSync(`${process.cwd()}/logs/metalogs.json`, JSON.stringify(file), { encoding: "utf-8" })
-
-        return new metadata(_name, _imageurl, `${_name} is an offical member!`, "TheGuild.io", temp);
+        return s;
 }
 
 const getDNA = () => {
         let array = [32];
+
         for (i = 0; i < 32; i++) {
                 array[i] = Math.floor(Math.random() * 10);
         }
+
         return array.join("");
 }
+
+
+
+
+
+
 module.exports = { getTraits, getDNA };
