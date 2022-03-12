@@ -85,7 +85,7 @@ const guildMemberSchema = new Schema({
 });
 
 //@param @dbURI connection to mongoDB
-const dbURI = "mongodb+srv://user:Y3abUp73B1DYTybb@cluster0.qhkz6.mongodb.net/TheGuild?retryWrites=true&w=majority";
+const dbURI = "";
 
 
 //uploades json files stored in path `public/final` to mongoDB
