@@ -1,3 +1,5 @@
+<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+<script src="../scripts/metamask/metamask.conf.js"></script>
 <style>
     .navigation-header {
         list-style-type: none;
@@ -18,7 +20,7 @@
   color: antiquewhite;
   background-color: #000000da;
 }
-    button#log-out{
+    button#log-out,button#btn-wallet{
         float:right;
     }
 </style>
@@ -27,6 +29,7 @@
     <li class="navigation-list"><a class="nav-a" href="/create">Create</a></li>
     <li class="navigation-list"><a class="nav-a" href="/pendingUsers">Submit List</a></li>
     <li class="navigation-list"><a class="nav-a" href="">Contact Admin</a></li>
-    <li class="navigation-list"><a class="nav-a" href="">About</a></li>
+    <li class="navigation-list"><a class="nav-a" href="/wallet">Wallet</a></li>
     <form action="/logout?_method=DELETE" method="POST"><button type="submit" id="log-out">Log out</button></form>
+    <button type="button" id="btn-wallet" value="Check active wallet">Wallet</button>
 </ul>
