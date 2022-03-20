@@ -1,10 +1,10 @@
 const fs = require("fs");
 const process = require('process');
 //constructor for the metadata format
-function metadata(_name,_dna, _imageurl, _desc, _social, _atr = []) {
+function metadata(_name,_dna, _imageurl, _desc, _social, _atr) {
         this.name = _name,
                 this.DNA = _dna,
-                this.image_url = _imageurl,
+                this.image = _imageurl,
                 this.description = _desc
         this.social_media = _social,
                 this.attributes = _atr
@@ -60,7 +60,7 @@ const getTraits = (_username, _name, _imageurl, _layers = []) => {
 
         console.log(`${_layers.length} attributes have been proccesed!`);
 
-        s = new metadata(_name, getDNA(), _imageurl, `${_name} is an offical member!`, "TheGuild.io", temp);
+        s = new metadata(_name, getDNA(), _imageurl, `${_name} is an offical member!`, "TheGuild.io", [...temp]);
 
         fs.writeFileSync(`${process.cwd()}/users/${_username}/metadata/${s.name}.json`, JSON.stringify(s));
 

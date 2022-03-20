@@ -26,7 +26,7 @@ const convertImage_SVG = (_name, _username) => {
         let temp1 = JSON.parse(temp);
 
         res = `data:image/png;base64, ` + `${res}`;
-        temp1.image_url = res;
+        temp1.image = res;
         fs.writeFileSync(`${process.cwd()}/users/${_username}/final/${_name}.json`, JSON.stringify(temp1));
         console.log("image converted to baseCode!");
     }).then(result => {
