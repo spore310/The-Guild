@@ -4,7 +4,7 @@ const localStrategy = require("passport-local").Strategy;
 
 const mongoose = require("mongoose");
 
-const dbURI = "";
+const dbURI = "mongodb+srv://user:Y3abUp73B1DYTybb@cluster0.qhkz6.mongodb.net/TheGuild?retryWrites=true&w=majority";
 
 mongoose.connect(dbURI, {
     useNewUrlParser: true,

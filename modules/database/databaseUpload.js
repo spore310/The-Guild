@@ -20,7 +20,7 @@ const metaDataSchema = new Schema({
         required: true,
         immutable: true
     },
-    image_url: {
+    image: {
         type: String,
         required: true
     },
@@ -33,7 +33,7 @@ const metaDataSchema = new Schema({
         required: true
     },
     attributes: {
-        type: [[Object]],
+        type: [],
         required: true
     }
 }, { _id: false });
@@ -63,6 +63,16 @@ const userSchema = new Schema({
         type: String,
         required: true,
         unique: true
+    },
+    wallet:{
+        type: String,
+        required: true,
+        unique: true
+    },
+    on_chain:{
+        type: Boolean,
+        required: true,
+        default: false
     }
 
 }, { _id: false });
@@ -84,8 +94,10 @@ const guildMemberSchema = new Schema({
     }
 });
 
+
+
 //@param @dbURI connection to mongoDB
-const dbURI = "";
+const dbURI = "mongodb+srv://user:Y3abUp73B1DYTybb@cluster0.qhkz6.mongodb.net/TheGuild?retryWrites=true&w=majority";
 
 
 //uploades json files stored in path `public/final` to mongoDB
@@ -140,7 +152,7 @@ const uploadFiles = () => {
 }
 
 
-const uploadSingle = async (_name, _userEmail, _adminUsername) => {
+const uploadSingle = async (_name, _userEmail, _wallet, _adminUsername) => {
     try {
         const conn = mongoose.createConnection(dbURI, {
             useNewUrlParser: true,
@@ -154,9 +166,10 @@ const uploadSingle = async (_name, _userEmail, _adminUsername) => {
 
         const admin = { admin_username: _adminUsername };
 
-        const userInfo = { name: _name, email: _userEmail }
+        const userInfo = { name: _name, email: _userEmail, wallet: _wallet };
 
         let Users = conn.model("users", guildMemberSchema);
+        let Checker = conn.model("users", guildMemberSchema);
 
         let check = Users.find({ metadata: { DNA: nftObj.DNA } })
         if (!check) {
@@ -164,8 +177,8 @@ const uploadSingle = async (_name, _userEmail, _adminUsername) => {
         }
         const entry = { metadata: nftObj, admin: admin, user: userInfo };
 
-        let result = await Users.create(entry);
-        console.log(result);
+        let insert = await Users.create(entry);
+        
         conn.close();
 
     } catch (e) {
