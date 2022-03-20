@@ -10,14 +10,26 @@
 
 <body>
     <h1>Upload Info to Submit</h1><br><br>
-    <img width="50" height="50" src="<%= data.image_url %>">
+    <img width="50" height="50" src="<%= data.image %>">
     <div id="upload-input">
         <form action="/submitUser" method="post">
             <label for="name">Name:</label>
             <input type="text" name="name" value="<%= data.name %>" readonly><br>
-            <label for="email">Email:</label>
-            <input type="email" name="email" placeholder="enter email"><br>
-            <input type="submit" value="upload">
+            <label for="DNA">DNA: </label>
+            <label><%= data.DNA %> </label><br>
+            <% data.attributes.forEach(trait=>{ %>
+                <label for="<%= trait.trait_type %>">
+                    <%= trait.trait_type %>: 
+                </label>
+                <label for="<%= trait.value %>">
+                    <%= trait.value %>
+                </label><br>
+                <% });%>
+                    <label for="wallet">Wallet Address:</label>
+                    <input type="text" name="wallet" minlength="42" maxlength="42" required><br>
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" placeholder="enter email" required><br>
+                    <input type="submit" value="upload">
         </form>
     </div>
 </body>

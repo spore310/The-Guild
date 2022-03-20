@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Guild Wallet Connect</title>
+
+    <style>
+        #btn-wallet {
+            visibility: visible;
+        }
+    </style>
+
+    <%- include('partials/header.ejs') %>
+
+        <script type="text/javascript" src="scripts/metamask/start.js"></script>
+</head>
+
+<body>
+
+
+    <div id="btn-container">
+        <p id="greetings">Welcome <strong><span id="greetings-inject">to the wallet</span></strong> please connect to
+            the mumbai network.
+        </p>
+        <p>If you do not see the proper address listed on the page, try to either refresh the page, press the wallet
+            button, or manually connect your wallet via metamask</p>
+        <button type="button" id="btn-nft" value="NFT">NFT</button>
+        <p id="wallet"></p>
+        <p id="nft"></p>
+
+    </div>
+
+</body>
+
+</html>

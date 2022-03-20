@@ -8,43 +8,57 @@
 
 </head>
 <style>
-    img {
-      float: right;
-    }
-  </style>
+  img {
+    float: right;
+  }
+</style>
+
 <body>
-<label for="result">Last nft drafted</label>
+  <label for="result">Last nft drafted</label>
 
-<div class ="nft-confirmation">
- <p>response page</p>  
+  <div class="nft-confirmation">
+    <p>response page</p>
 
-<label for="name">Name: </label>
-<label id="name"><%= metaData.name %></label><br>
+    <label for="name">Name: </label>
+    <label id="name">
+      <%= metaData.name %>
+    </label><br>
 
-<label for="DNA">DNA: </label>
-<label id="DNA"><%= metaData.DNA %></label><br>
+    <label for="DNA">DNA: </label>
+    <label id="DNA">
+      <%= metaData.DNA %>
+    </label><br>
 
-<label for="Description">Description: </label>
-<label id="Description"><%= metaData.description%></label><br>
+    <label for="Description">Description: </label>
+    <label id="Description">
+      <%= metaData.description%>
+    </label><br>
 
-<label for="Social">Social Media: </label>
-<label id="Social"><%= metaData.social_media %></label><br>
+    <label for="Social">Social Media: </label>
+    <label id="Social">
+      <%= metaData.social_media %>
+    </label><br>
 
-<% metaData.attributes.forEach(trait =>{ %>
-<label for = "<%= trait.trait_type %>"><%= trait.trait_type %>: </label>
-<label id = "<%= trait.trait_type %>"><%= trait.value %></label><br>
-<% }); %>
+    <% metaData.attributes.forEach(trait=>{ %>
+      <label for="<%= trait.trait_type %>">
+        <%= trait.trait_type %>:
+      </label>
+      <label id="<%= trait.trait_type %>">
+        <%= trait.value %>
+      </label><br>
+      <% }); %>
 
-<form action="/result" method="POST">
-<p>Are you sure you want to confirm this NFT?</p>
-<input type ="text" name = "draftName1" value="<%= metaData.name %>" readonly><br>
-<input type="radio" id="confirm" name="confirm_operator" value="yes">
-<label for="confirm">Yes</label><br>
-<input type="radio" id="cancel" name="confirm_operator" value="no" checked>
-<label for="cancel">No</label><br>
-<input type="submit" value="confirm" />
-</form>
-</div>
+        <form action="/result" method="POST">
+          <p>Are you sure you want to confirm this NFT?</p>
+          <input type="text" name="draftName1" value="<%= metaData.name %>" readonly><br>
+          <input type="radio" id="confirm" name="confirm_operator" value="yes">
+          <label for="confirm">Yes</label><br>
+          <input type="radio" id="cancel" name="confirm_operator" value="no" checked>
+          <label for="cancel">No</label><br>
+          <input type="submit" value="confirm" />
+        </form>
+  </div>
 
 </body>
+
 </html>
