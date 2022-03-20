@@ -138,6 +138,11 @@ app.post("/deleteUser", checkAuthenticated, (req, res) => {
   });
 });
 
+app.get("/wallet", checkAuthenticated, (req, res) =>{
+  res.render(path.join(__dirname, "/public/wallet.ejs"));
+  
+})
+
 app.post("/uploadUser", checkAuthenticated, (req, res) => {
   const ref = Object.keys(req.body)[0];
   let obj1 = fs.readFileSync(`${process.cwd()}/users/${req.user.username}/final/${ref}.json`);
@@ -149,7 +154,7 @@ app.post("/uploadUser", checkAuthenticated, (req, res) => {
 
 app.post("/submitUser", checkAuthenticated, async (req, res) => {
   const x = req.body;
-  const result = await uploadSingle(x.name, x.email, req.user.username);
+  const result = await uploadSingle(x.name, x.email, x.wallet, req.user.username);
   deleteTableRow(x.name, req.user.username);
 
   res.redirect("/pendingUsers");
