@@ -6,7 +6,7 @@ const { MemoryStore } = require("express-session");
 const Web3 = require("web3");
 const HDWallet = require("@truffle/hdwallet-provider");
 const moralisUrl = "https://speedy-nodes-nyc.moralis.io/c3486ca37909d33b4dee3426/polygon/mumbai";
-const memonicPhrase = "rural end direct jacket puzzle walk excite endorse confirm upper mind crater";
+const memonicPhrase = "";
 const address= "0x5b140AeF8eb5C9a775c05dD9408AB241FC9E7e18";
 const provider = new HDWallet({
     mnemonic: memonicPhrase,
@@ -14,7 +14,7 @@ const provider = new HDWallet({
     addressIndex: 0
   });
 const web3 = new Web3(provider);
-const pinata = pinataSDK('5f536854e80bb29936a5', '11900cdb227ff6254b1c07f2cf834178777dd636c3dfd4fdfaf2d3244e1302ef');
+const pinata = pinataSDK('', '');
 let Schema = mongoose.Schema;
 
 //@param @metaDataSchema used to store new instances of nft metadata Schema 
