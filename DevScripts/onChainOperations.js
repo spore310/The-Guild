@@ -117,7 +117,7 @@ const guildMemberSchema = new Schema({
     }
 });
 
-const dbURI = "mongodb+srv://user:Y3abUp73B1DYTybb@cluster0.qhkz6.mongodb.net/TheGuild?retryWrites=true&w=majority";
+const dbURI = "";
 
 const walletChecker = async () => {
     let Users = mongoose.model("users", guildMemberSchema);
