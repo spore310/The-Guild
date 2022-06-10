@@ -4,7 +4,7 @@ const localStrategy = require("passport-local").Strategy;
 
 const mongoose = require("mongoose");
 
-const dbURI = "";
+const dbURI = "mongodb+srv://user:Y3abUp73B1DYTybb@cluster0.qhkz6.mongodb.net/TheGuild?retryWrites=true&w=majority";
 
 mongoose.connect(dbURI, {
     useNewUrlParser: true,
@@ -26,7 +26,7 @@ const adminSchema = new Schema({
 
 const setPassport = (passport) => {
 
-    const adminSign = mongoose.model("Admin", adminSchema);
+    const adminSign = mongoose.model("admins", adminSchema);
     passport.use(new localStrategy((username, password, done) => {
         adminSign.findOne({ username: username }, (err, user) => {
             if (err) throw err;
@@ -77,7 +77,7 @@ const registerAdmin = async (_user, _pass) => {
 
     });
 
-    let admin = register.model("Admin", adminSchema)
+    let admin = register.model("admins", adminSchema)
     const check = await admin.findOne({ username: _user });
     if (check) {
         register.close();
